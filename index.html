@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datas Ambientais - Julho 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 50%, #a5d6a7 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(76, 175, 80, 0.2);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2e7d32 0%, #4caf50 50%, #66bb6a 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="60" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="70" cy="80" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-50px) translateY(-50px); }
+            100% { transform: translateX(50px) translateY(50px); }
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e8 100%);
+            border-radius: 15px;
+            border-left: 5px solid #4caf50;
+        }
+
+        .intro h2 {
+            color: #2e7d32;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .intro p {
+            color: #388e3c;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .date-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.15);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .date-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4caf50, #66bb6a, #81c784);
+        }
+
+        .date-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(76, 175, 80, 0.25);
+            border-color: #4caf50;
+        }
+
+        .date-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2e7d32;
+            margin-bottom: 10px;
+            display: inline-block;
+            background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+            padding: 10px 20px;
+            border-radius: 50px;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .date-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1b5e20;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .date-description {
+            color: #388e3c;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4caf50, #66bb6a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            float: right;
+            margin-top: -10px;
+        }
+
+        .footer {
+            background: #f1f8e9;
+            padding: 30px;
+            text-align: center;
+            border-top: 2px solid #e8f5e8;
+        }
+
+        .footer p {
+            color: #2e7d32;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.2rem; }
+            .header p { font-size: 1rem; }
+            .calendar-grid { grid-template-columns: 1fr; }
+            .container { margin: 10px; }
+            body { padding: 10px; }
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #e8f5e8, #f1f8e9);
+            border-left: 4px solid #4caf50;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌱 Julho Verde</h1>
+            <p>Datas Importantes para o Meio Ambiente</p>
+        </div>
+
+        <div class="content">
+            <div class="intro">
+                <h2>Mês da Consciência Ambiental</h2>
+                <p>Julho é um mês especial para celebrarmos nossa conexão com a natureza e reconhecermos os profissionais que dedicam suas vidas à preservação do meio ambiente. Confira as principais datas ambientais deste mês!</p>
+            </div>
+
+            <div class="calendar-grid">
+                <div class="date-card">
+                    <div class="icon">🚒</div>
+                    <div class="date-number">02</div>
+                    <h3 class="date-title">Dia Nacional dos Bombeiros</h3>
+                    <p class="date-description">Homenageia os profissionais que protegem pessoas e combatem incêndios florestais, sendo fundamentais na preservação dos nossos ecossistemas.</p>
+                </div>
+
+                <div class="date-card">
+                    <div class="icon">🔬</div>
+                    <div class="date-number">08</div>
+                    <h3 class="date-title">Dia Nacional da Ciência</h3>
+                    <p class="date-description">Reconhece a importância da ciência, incluindo pesquisas ambientais que nos ajudam a compreender e proteger nosso planeta.</p>
+                </div>
+
+                <div class="date-card">
+                    <div class="icon">🌲</div>
+                    <div class="date-number">12</div>
+                    <h3 class="date-title">Dia do Engenheiro Florestal</h3>
+                    <p class="date-description">Celebra os profissionais responsáveis pela gestão sustentável das florestas e conservação da biodiversidade.</p>
+                </div>
+
+                <div class="date-card">
+                    <div class="icon">💧</div>
+                    <div class="date-number">13</div>
+                    <h3 class="date-title">Dia do Engenheiro Sanitarista</h3>
+                    <p class="date-description">Reconhece os profissionais que trabalham com saneamento e saúde ambiental, garantindo qualidade de vida sustentável.</p>
+                </div>
+
+                <div class="date-card">
+                    <div class="icon">🌳</div>
+                    <div class="date-number">17</div>
+                    <h3 class="date-title">Dia de Proteção às Florestas</h3>
+                    <p class="date-description">Data dedicada à conscientização sobre a importância da preservação florestal para o equilíbrio climático mundial.</p>
+                </div>
+
+                <div class="date-card">
+                    <div class="icon">🐋</div>
+                    <div class="date-number">23</div>
+                    <h3 class="date-title">Dia da Baleia</h3>
+                    <p class="date-description">Comemora a proibição da pesca comercial de baleias estabelecida pela Comissão Baleeira Internacional.</p>
+                </div>
+
+
+
+                <div class="date-card">
+                    <div class="icon">🌾</div>
+                    <div class="date-number">28</div>
+                    <h3 class="date-title">Dia do Agricultor</h3>
+                    <p class="date-description">Celebra os profissionais da agricultura e destaca a importância da produção sustentável de alimentos.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🌍 Cada data é uma oportunidade de refletir sobre nosso impacto no planeta e agir de forma mais sustentável! 🌿</p>
+        </div>
+    </div>
+</body>
+</html>
